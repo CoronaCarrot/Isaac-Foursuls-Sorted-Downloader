@@ -60,7 +60,7 @@ for page in pages:
         prev = int(page.text)
 cardcount = str(cardcount.text).strip(" CARDS FOUND")
 
-print(f"Downloading {cardcount} cards from {prev} pages.")
+print(f"\nFound {cardcount} cards. beginning download...\n")
 
 cardhref = []
 
@@ -80,7 +80,7 @@ while prev > 0:
             cardhref.append(href)
     time.sleep(1)
 
-for card in tqdm(cardhref):
+for card in tqdm(cardhref, bar_format="{l_bar}{bar}|{n_fmt}/{total_fmt} [Est. {remaining}]"):
     browser.get(card)
     try:
         cards = browser.find_element_by_xpath("//*[contains(@alt, 'Treasure Card Back')]")
@@ -122,4 +122,6 @@ for card in tqdm(cardhref):
         f.write(requests.get(url.replace("-308x420", "")).content)
         f.close()
 
-make_archive(f'./Downloads/{filename}/Output', 'zip', root_dir=f'./Downloads/{filename}/')
+print("\nDownload complete. Zipping files...")
+make_archive(f'./Downloads/{filename}/Output', 'zip', root_dir=f'./Downloads/{filename}/Output.zip')
+os.startfile(f'./Downloads/{filename}/')
