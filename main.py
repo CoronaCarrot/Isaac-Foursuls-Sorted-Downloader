@@ -124,4 +124,3 @@ for card in tqdm(cardhref, bar_format="{l_bar}{bar}|{n_fmt}/{total_fmt} [Est. {r
 
 print("\nDownload complete. Zipping files...")
 make_archive(f'./Downloads/{filename}/Output', 'zip', root_dir=f'./Downloads/{filename}')
-os.startfile(f'./Downloads/{filename}/Output.zip')
