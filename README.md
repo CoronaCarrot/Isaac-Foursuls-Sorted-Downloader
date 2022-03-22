@@ -9,7 +9,7 @@
 <h4 align="center">A script to download cards from the <a href="https://foursouls.com/" target="_blank">FourSouls website</a>.</h4>
 
 <p align="center">
-  <a href="https://discord.gg/WvShyptJTX">
+  <a href="https://github.com/CoronaCarrot/Isaac-Foursuls-Sorted-Downloader/releases">
     <img src="https://img.shields.io/github/v/release/CoronaCarrot/Isaac-Foursuls-Sorted-Downloader?display_name=tag"
          alt="Release">
   </a>
