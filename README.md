@@ -1,24 +1,17 @@
 <h1 align="center">
   <br>
-  <img src="https://openweathermap.org/img/wn/10d@4x.png" alt="WeatherBot Icon" width="200">
+  <img src="https://raw.githubusercontent.com/CoronaCarrot/Assets/main/Isaac-Uploader/Title.png" alt="The Binding Of Isaac Four Souls logo" width="320">
   <br>
-  WeatherBot
+  Isaac Downloader
   <br>
 </h1>
 
-<h4 align="center">A Discord Bot With Some Fun Features Built On The <a href="https://openweathermap.org/" target="_blank">OpenWeatherMap API</a>.</h4>
+<h4 align="center">A script to download cards from the <a href="https://foursouls.com/" target="_blank">FourSouls website</a>.</h4>
 
 <p align="center">
   <a href="https://discord.gg/WvShyptJTX">
-    <img src="https://img.shields.io/github/v/release/CoronaCarrot/WeatherBot?display_name=tag"
+    <img src="https://img.shields.io/github/v/release/CoronaCarrot/Isaac-Foursuls-Sorted-Downloader?display_name=tag"
          alt="Release">
-  </a>
-  <a href="https://gitter.im/amitmerchant1990/electron-markdownify"><img src="https://img.shields.io/discord/894518393598799932" alt="Discord"></a>
-  <a href="https://saythanks.io/to/CoronaCarrot">
-      <img src="https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg" alt="Say Thanks">
-  </a>
-  <a href="https://www.paypal.com/donate?hosted_button_id=BPNVVEXNAUAZQ">
-    <img src="https://img.shields.io/badge/%24-donate-ff69b4" alt="Donate">
   </a>
 </p>
 
@@ -33,13 +26,13 @@
 
 ## Key Features
 
-* LiveForecast - Get the current forecast of any location in seconds
-* Achievements - Achivement hunt for hidden achievements, or complete the simple ones. Its up to you :D
-* More Soon
+* Filtered Downloading - Download exact cards you want using the https://foursouls.com/ advanced search filters
+* Sorted Downloading - Cards are automatically sorted into type folders so you don't have to.
+* Progress Bar - See your downloads progress in a progress bar with est completion times
 
 ## Installation
 
-There are two ways to get this bot installed for self hosting.
+There are two ways to get this program installed for use.
 
 ### Option one
 
@@ -47,10 +40,10 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [P
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/CoronaCarrot/WeatherBot
+$ git clone https://github.com/CoronaCarrot/Isaac-Foursuls-Sorted-Downloader
 
 # Go into the repository
-$ cd WeatherBot
+$ cd Isaac-Foursuls-Sorted-Downloader
 
 # Install dependencies
 $ pip install -r requirements.txt
@@ -61,7 +54,7 @@ $ python main.py
 
 ### Option Two
 
-You can [download](https://github.com/CoronaCarrot/WeatherBot/releases) the Source Code for the bot here instead
+You can [download](https://github.com/CoronaCarrot/Isaac-Foursuls-Sorted-Downloader/releases) the Source Code for the bot here instead
 
 ## Credits
 
@@ -69,14 +62,12 @@ This discord bot uses the following open source packages:
 
 - [Python (Language)](https://www.python.org/)
 - [TermColor2 (Python Module)](https://github.com/v2e4lisp/termcolor2)
-- [Discord.py (Python Module)](https://github.com/Rapptz/discord.py)
-- [pyotp (Python Module)](https://github.com/pyauth/pyotp)
-- [qrcode (Python Module)](https://github.com/lincolnloop/python-qrcode)
-- Emojis are taken from [OpenWeatherMap](https://openweathermap.org/)
+- [Selenium (Python Module)](https://github.com/SeleniumHQ/selenium)
+- [tqdm (Python Module)](https://github.com/tqdm/tqdm)
 
 ## Related
 
-[WeatherBot](https://cutt.ly/WeatherBot) - Public version of this bot. Hosted by me.
+[FourSouls Site](https://foursouls.com/) - Website that the program scrapes from
 
 
 ## You may also like...
