@@ -7,6 +7,7 @@ from shutil import make_archive
 import requests as requests
 from selenium import webdriver
 from tqdm import tqdm
+from termcolor import colored
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
@@ -23,12 +24,22 @@ options.add_argument('--allow-running-insecure-content')
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 browser = webdriver.Chrome(options=options)
 try:
+    print(colored("""
+█████████""", "red") + colored("""  THE BINDING OF
+""", "yellow") + colored("""   ███   █████   ██████    ██████    ██████                
+   ███  ███          ███       ███  ███  ███ 
+   ███   █████   ███████   ███████  ███     
+   ███      ███ ███  ███  ███  ███  ███  ███
+   ███  ██████   ████████  ████████  ██████
+""", "red") + colored("""█████████""", "red") + """                CARD DOWNLOADER""" + colored("""        
+                                  
+https://github.com/CoronaCarrot/Isaac-Foursuls-Sorted-Downloader""", "white"))
     print(
-        "Welcome to the Isaac Downloader\n\nPlease enter a search filter link from "
-        "http://foursouls.com/card-search\nwith the cards you wish to download.\n")
+        "\n\nPlease enter a search filter link from https://foursouls.com/card-search"
+        "\nwith the cards you wish to download.\n")
     loop = True
     while loop:
-        web = input("> ")
+        web = input(colored("> ", "red"))
         if web.startswith("https://foursouls.com/card-search/?"):
             loop = False
             browser.get(web)
@@ -103,7 +114,7 @@ for card in tqdm(cardhref):
     cardimg = browser.find_element_by_xpath("//*[contains(@class, 'cardFront')]")
     url = cardimg.get_attribute("src")
     imgname = card.split("/")
-    imgname = imgname[len(imgname)-2]
+    imgname = imgname[len(imgname) - 2]
 
     if not os.path.exists(f"Downloads/{filename}/{type}"):
         os.mkdir(f"Downloads/{filename}/{type}")
@@ -112,4 +123,3 @@ for card in tqdm(cardhref):
         f.close()
 
 make_archive(f'./Downloads/{filename}/Output', 'zip', root_dir=f'./Downloads/{filename}/')
-
