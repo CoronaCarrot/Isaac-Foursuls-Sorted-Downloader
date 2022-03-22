@@ -39,7 +39,7 @@ https://github.com/CoronaCarrot/Isaac-Foursuls-Sorted-Downloader""", "white"))
         "\nwith the cards you wish to download.\n")
     loop = True
     while loop:
-        web = input(colored("> ", "red"))
+        web = input("> ")
         if web.startswith("https://foursouls.com/card-search/?"):
             loop = False
             browser.get(web)
