@@ -28,7 +28,7 @@
 
 * Filtered Downloading - Download exact cards you want using the https://foursouls.com/ advanced search filters
 * Sorted Downloading - Cards are automatically sorted into type folders so you don't have to.
-* Progress Bar - See your downloads progress in a progress bar with est completion times
+* Progress Bar - See your downloads progress in a progress bar with estimate completion times
 
 ## Installation
 
