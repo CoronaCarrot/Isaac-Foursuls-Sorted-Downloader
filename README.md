@@ -54,7 +54,7 @@ $ python main.py
 
 ### Option Two
 
-You can [download](https://github.com/CoronaCarrot/Isaac-Foursuls-Sorted-Downloader/releases) the Source Code for the bot here instead
+You can [download](https://github.com/CoronaCarrot/Isaac-Foursuls-Sorted-Downloader/releases) the Source Code for the program here instead
 
 ## Credits
 
