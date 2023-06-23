@@ -7,6 +7,7 @@ from shutil import make_archive
 import requests as requests
 from selenium import webdriver
 from tqdm import tqdm
+from selenium.webdriver.common.by import By
 from termcolor import colored
 
 # Added to ignore Deprecation Warnings because I can't be bothered to switch to new system
@@ -21,7 +22,7 @@ user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTM
 # Defines options for the headless Chrome browser
 options = webdriver.ChromeOptions()
 options.add_argument(f'user-agent={user_agent}')
-options.add_argument("--headless")
+#options.add_argument("--headless")
 options.add_argument("--window-size=1920,1080")
 options.add_argument('--ignore-certificate-errors')
 options.add_argument('--allow-running-insecure-content')
@@ -61,10 +62,10 @@ except:
     exit()
 
 # Finds the card count
-cardcount = browser.find_element_by_xpath("//*[contains(text(), 'cards found')]")
+cardcount = browser.find_element(By.XPATH, "//*[contains(text(), 'cards found')]")
 
 # gets page amount
-pages = browser.find_elements_by_xpath("//*[contains(@class, 'page-numbers')]")
+pages = browser.find_elements(By.XPATH, "//*[contains(@class, 'page-numbers')]")
 prev = 0
 
 # gets a list of all card links within those pages
@@ -79,6 +80,7 @@ cardhref = []
 
 runc = 0
 while prev > 0:
+    print("Scanning Results... {} Pages scanned...".format(runc))
 
     if prev != 1:
         page = web.replace("card-search/", f"card-search/page/{prev}/")
@@ -86,46 +88,48 @@ while prev > 0:
         page = web
     browser.get(page)
     prev -= 1
-    cards = browser.find_elements_by_xpath("//*[contains(@href, 'https://foursouls.com/cards/')]")
+    cards = browser.find_elements(By.XPATH, "//*[contains(@href, 'https://foursouls.com/cards/')]")
     for card in cards:
         href = card.get_attribute("href")
         if href != "https://foursouls.com/cards/":
             cardhref.append(href)
+
+    runc += 1
     time.sleep(1)
 
 # runs through the full list of cards to download
 for card in tqdm(cardhref, bar_format="{l_bar}{bar}|{n_fmt}/{total_fmt} [Est. {remaining}]"):
     browser.get(card)
     try:
-        cards = browser.find_element_by_xpath("//*[contains(@alt, 'Treasure Card Back')]")
+        cards = browser.find_element(By.XPATH, "//*[contains(@alt, 'Treasure Card Back')]")
         type = "treasure"
     except:
         try:
-            cards = browser.find_element_by_xpath("//*[contains(@alt, 'Soul Card Back')]")
+            cards = browser.find_element(By.XPATH, "//*[contains(@alt, 'Soul Card Back')]")
             type = "soul"
         except:
             try:
-                cards = browser.find_element_by_xpath("//*[contains(@alt, 'Character Card Back')]")
+                cards = browser.find_element(By.XPATH, "//*[contains(@alt, 'Character Card Back')]")
                 type = "character"
             except:
                 try:
-                    cards = browser.find_element_by_xpath("//*[contains(@alt, 'Eternal Card Back')]")
+                    cards = browser.find_element(By.XPATH, "//*[contains(@alt, 'Eternal Card Back')]")
                     type = "eternal"
                 except:
                     try:
-                        cards = browser.find_element_by_xpath("//*[contains(@alt, 'Loot Card Back')]")
+                        cards = browser.find_element(By.XPATH, "//*[contains(@alt, 'Loot Card Back')]")
                         type = "loot"
                     except:
                         try:
-                            cards = browser.find_element_by_xpath("//*[contains(@alt, 'Monster Card Back')]")
+                            cards = browser.find_element(By.XPATH, "//*[contains(@alt, 'Monster Card Back')]")
                             type = "monster"
                         except:
                             try:
-                                cards = browser.find_element_by_xpath("//*[contains(@alt, 'Room Card Back')]")
+                                cards = browser.find_element(By.XPATH, "//*[contains(@alt, 'Room Card Back')]")
                                 type = "room"
                             except:
                                 type = "unsorted"
-    cardimg = browser.find_element_by_xpath("//*[contains(@class, 'cardFront')]")
+    cardimg = browser.find_element(By.XPATH, "//*[contains(@class, 'cardFront')]")
     url = cardimg.get_attribute("src")
     imgname = card.split("/")
     imgname = imgname[len(imgname) - 2]
